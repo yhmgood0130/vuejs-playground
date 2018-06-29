@@ -11,7 +11,7 @@
 <body>
 	<div id="app">
 		<input type="text" v-on:input="changeTitle">
-		<p>{{ title }}</p>
+		<p>{{ displayWord() }}</p>
 	</div>
 	<script>
 		new Vue({
@@ -20,8 +20,8 @@
 				title: 'Hello world cup'
 			},
 			methods: {
-				changeTitle: function(event) {
-				this.title = event.target.value;
+				displayWord: function() {
+					return 'my time is now';
 				}
 			}
 		});
