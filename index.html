@@ -10,18 +10,36 @@
 </head>
 <body>
 	<div id="app">
-		<input type="text" v-on:input="changeTitle">
-		<p>{{ displayWord() }}</p>
+		<h2>{{ randomNumber() }}</h2>
+		<p v-once>{{ title }}</p>
+		<p>{{ displayWord() }} - <a v-bind:href="link">Mein HausePage</a></p>
+		<img v-bind:src="quack" style="width:50%;height:50%"></img>
+		<hr>
+		<p v-html="finishedLink"></p>
+		<div>
+			<input type="text" v-bind:value="title" v-model="title">
+			<button v-on:click="resetValue">Try me</button>
+		</div>
 	</div>
 	<script>
 		new Vue({
 			el: '#app',
 			data: {
-				title: 'Hello world cup'
+				title: 'Hello world cup',
+				link: 'https://moeyang.com',
+				quack: 'https://24hoursofculture.files.wordpress.com/2013/10/de7c5-types-of-ducks.jpg',
+				finishedLink: '<a href="https://moeyang.com">Mein Hausepage</a>'
 			},
 			methods: {
 				displayWord: function() {
-					return 'my time is now';
+					this.title = "Auf Wiedersehen Deutschland";
+					return this.title;
+				},
+				randomNumber: function() {
+					return Math.random();
+				},
+				resetValue: function() {
+					this.title = "";
 				}
 			}
 		});
